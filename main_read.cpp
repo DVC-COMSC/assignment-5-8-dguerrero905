@@ -1,27 +1,47 @@
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 int main() {
-    int num;
-    int sum = 0;
+    int N;
+    
+    // Open the file for writing
+    ofstream outFile("students.txt");
 
-    // Prompt the user to input a number
-    cout << "Enter a number: ";
-    cin >> num;
-
-    // Validate if the input number is positive
-    if (num <= 0) {
-        cout << "Please enter a positive number." << endl;
-        return 1; // Exit the program with an error code
+    if (!outFile) {
+        cerr << "Error: Unable to create or open the file." << endl;
+        return 1; // Exit program with error code
     }
 
-    // Calculate the summation of the series
-    for (int i = 1; i <= num; ++i) {
-        sum += i;
+    // Ask for the number of students
+    cout << "Enter the number of students: ";
+    cin >> N;
+
+    // Write the number of students to the file
+    outFile << N << endl;
+
+    // Input student information and write to the file
+    for (int i = 0; i < N; ++i) {
+        string name;
+        int score1, score2;
+
+        cout << "Enter name of student " << i + 1 << ": ";
+        cin >> name;
+
+        cout << "Enter score 1 for " << name << ": ";
+        cin >> score1;
+
+        cout << "Enter score 2 for " << name << ": ";
+        cin >> score2;
+
+        // Write student information to the file
+        outFile << name << " " << score1 << " " << score2 << endl;
     }
 
-    // Print the summation of the series
-    cout << "The summation of the series up to " << num << " is: " << sum << endl;
+    // Close the file
+    outFile.close();
+
+    cout << "Student information has been saved to students.txt." << endl;
 
     return 0;
 }
