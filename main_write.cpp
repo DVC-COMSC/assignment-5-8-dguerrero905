@@ -2,9 +2,8 @@
 #include <fstream>
 using namespace std;
 
-int main()
-{
-   int N;
+int main() {
+    int N;
     
     // Open the file for writing
     ofstream outFile("students.txt");
@@ -27,8 +26,7 @@ int main()
         int score1, score2;
 
         cout << "Enter name of student " << i + 1 << ": ";
-        cin.ignore(); // Clear input buffer
-        getline(cin, name);
+        cin >> name;
 
         cout << "Enter score 1 for " << name << ": ";
         cin >> score1;
@@ -46,5 +44,4 @@ int main()
     cout << "Student information has been saved to students.txt." << endl;
 
     return 0;
-}
 }
